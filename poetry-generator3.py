@@ -2,6 +2,7 @@ from wordfreq import word_frequency
 from random import sample
 import time
 import re
+import sys
 from itertools import product
 import numpy as np
 
@@ -321,7 +322,7 @@ def generate(dictionary,
 
 poem = generate(dictionary[:30000],
          [stresses, nostresses]*4,
-         get_pronunciation_end('traitor', dictionary)[0],
+         get_pronunciation_end(sys.argv[1], dictionary)[0],
          5)
 
 print ('\n'.join(map(lambda x: ' '.join(x), poem)))
