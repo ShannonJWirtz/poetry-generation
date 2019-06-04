@@ -2,6 +2,7 @@ from flask import Flask, request
 from datetime import datetime
 import re
 from poetrygenerator import *
+from random import sample
 app = Flask(__name__)
 
 @app.route('/')
@@ -9,7 +10,8 @@ def homepage():
 
     profile = [stresses, nostresses]*4
     gen_dict = dictionary[:30000]
-    rhyme = get_pronunciation_end('traitor', dictionary)[0]
+    default_rhymes = ['shaming', 'raining', 'sunder', 'creator', 'maker', 'traitor']
+    rhyme = get_pronunciation_end(sample(default_rhymes,1)[0], dictionary)[0]
     lines = 10
 
     user = request.args.get('user')
@@ -46,7 +48,7 @@ def homepage():
              lines)
     output = output
     start = """
-    <h1>Nonesense Poetry Generator</h1>
+    <h1>Nonsense Poetry Generator</h1>
     """
     middle = ''
     for line in output:

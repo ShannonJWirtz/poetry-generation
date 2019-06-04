@@ -313,7 +313,7 @@ def generate(dictionary,
         output += [[dictionary[i] for i in filled_profile]]
 
     if to_readable:
-        output = [[make_readable(entry['word']) for entry in line]
+        output = [' '.join([make_readable(entry['word']) for entry in line])
                   for line in output]
 
     return output
@@ -328,4 +328,4 @@ if __name__ == '__main__':
              get_pronunciation_end(rhyme, dictionary)[0],
              5)
 
-    print ('\n'.join(map(lambda x: ' '.join(x), poem)))
+    print ('\n'.join(poem))
