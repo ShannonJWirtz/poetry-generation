@@ -322,7 +322,7 @@ def generate(dictionary,
 if __name__ == '__main__':
 
     rhyme = sys.argv[1] if len(sys.argv) >=2 else 'commanding'
-    
+
     poem = generate(dictionary[:30000],
              [stresses, nostresses]*4,
              get_pronunciation_end(rhyme, dictionary)[0],
