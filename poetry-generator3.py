@@ -272,7 +272,7 @@ def get_pronunciation_end(word, dictionary, full_rhyme=True):
                 if len(stress_indices) == 0:
                     pronunciation_end = pronunciation
                 else:
-                    first_rhyme_syllable = min(stress_indices[-1], hard_nostress_indices[-1])
+                    first_rhyme_syllable = stress_indices[-1]
                     pronunciation_end = pronunciation[first_rhyme_syllable:]
             pronunciation_ends += [pronunciation_end]
     else:
@@ -284,8 +284,6 @@ def get_pronunciation_end(word, dictionary, full_rhyme=True):
             pronunciation_ends += [pronunciation_end]
 
     return pronunciation_ends
-
-dictionary = get_dictionary()
 
 def generate(dictionary,
              line_profile,
@@ -320,9 +318,14 @@ def generate(dictionary,
 
     return output
 
-poem = generate(dictionary[:30000],
-         [stresses, nostresses]*4,
-         get_pronunciation_end(sys.argv[1], dictionary)[0],
-         5)
 
-print ('\n'.join(map(lambda x: ' '.join(x), poem)))
+if __name__ == '__main__':
+
+    rhyme = sys.argv[1] if len(sys.argv) >=2 else 'commanding'
+    
+    poem = generate(dictionary[:30000],
+             [stresses, nostresses]*4,
+             get_pronunciation_end(rhyme, dictionary)[0],
+             5)
+
+    print ('\n'.join(map(lambda x: ' '.join(x), poem)))
