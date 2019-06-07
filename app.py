@@ -49,6 +49,16 @@ def homepage():
     output = output
     start = """
     <h1>Nonsense Poetry Generator</h1>
+    <form method="GET>
+      <label>Profile<input name="pr" value="ns5" /> <br/>
+      <label>Rhyming word <input name="r" value="spoiled" /> <br/>
+      <label>Number of lines<input name="l" value="10" /> <br/>
+      <label>How many entries from dictionary?<input name="n" value="30000" /> <br/>
+</form>
+    
+    
+    
+    
     """
     middle = ''
     for line in output:
